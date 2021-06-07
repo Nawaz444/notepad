@@ -1,0 +1,85 @@
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _reactRouterDom = require('react-router-dom');
+  var _axios = require('axios');
+  var _axiosDefault = _parcelHelpers.interopDefault(_axios);
+  var _querystring = require('querystring');
+  var _querystringDefault = _parcelHelpers.interopDefault(_querystring);
+  var _jsxFileName = "D:\\my applications\\notepad\\src\\screens\\home.jsx";
+  class home extends _reactDefault.default.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        notepad: ''
+      };
+      this.addNew = this.addNew.bind(this);
+    }
+    async componentDidMount() {
+      const {location} = this.props;
+      const {search} = location;
+      const queryParams = _querystringDefault.default.parse(search.slice(1));
+      if (queryParams.admissionsId) ;
+      {
+        const {data} = await _axiosDefault.default.get(`http://localhost:4000/notepad/${queryParams.notepadId}`);
+        this.setState({
+          notepadId: queryParams.notepadId,
+          note: data.value.note
+        });
+      }
+    }
+    async addNew() {
+      const {history} = this.props;
+      const {note} = this.state;
+      await _axiosDefault.default.post('http://localhost:4000/notepadd', {
+        note
+      });
+      history.push('/Display');
+    }
+    render() {
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 52,
+            columnNumber: 13
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("textarea", {
+          placeholder: "note",
+          rows: "30",
+          cols: "100",
+          onChange: event => this.setState(prev => ({
+            note: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 53,
+            columnNumber: 17
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("button", {
+          type: "button",
+          onClick: this.addNew,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 63,
+            columnNumber: 17
+          }
+        }, "save note"))
+      );
+    }
+  }
+  exports.default = _reactRouterDom.withRouter(home);
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

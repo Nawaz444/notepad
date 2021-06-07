@@ -1,0 +1,74 @@
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _reactRouterDom = require('react-router-dom');
+  var _jsxFileName = "D:\\my applications\\notepad\\src\\screens\\home.jsx";
+  class Home extends _reactDefault.default.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        note: ''
+      };
+      this.addNew = this.addNew.bind(this);
+    }
+    addNew() {
+      const {note} = this.state;
+      const finalArray = localStorage.getItem('finalArray');
+      const parsedArray = JSON.parse(finalArray);
+      parsedArray.push({
+        note
+      });
+      const stringify = JSON.stringify(parsedArray);
+      localStorage.setItem('finalArray', stringify);
+      const history = this.props.history;
+      history.push(`/${parsedArray.length - 1}`);
+    }
+    render() {
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 36,
+            columnNumber: 13
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement("textarea", {
+          placeholder: "note",
+          rows: "19",
+          cols: "50",
+          onChange: event => this.setState(prev => ({
+            note: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 37,
+            columnNumber: 17
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("button", {
+          type: "button",
+          onClick: this.addNew,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 47,
+            columnNumber: 17
+          }
+        }, "save note"))
+      );
+    }
+  }
+  exports.default = _c = _reactRouterDom.withRouter(Home);
+  var _c;
+  $RefreshReg$(_c, "%default%");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

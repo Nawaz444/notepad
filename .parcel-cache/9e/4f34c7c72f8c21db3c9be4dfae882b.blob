@@ -1,0 +1,251 @@
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _reactRouterDom = require('react-router-dom');
+  var _axios = require('axios');
+  var _axiosDefault = _parcelHelpers.interopDefault(_axios);
+  var _querystring = require('querystring');
+  var _querystringDefault = _parcelHelpers.interopDefault(_querystring);
+  var _materialUiCoreButton = require('@material-ui/core/Button');
+  var _materialUiCoreButtonDefault = _parcelHelpers.interopDefault(_materialUiCoreButton);
+  var _materialUiCoreTextField = require('@material-ui/core/TextField');
+  var _materialUiCoreTextFieldDefault = _parcelHelpers.interopDefault(_materialUiCoreTextField);
+  var _materialUiCoreGrid = require('@material-ui/core/Grid');
+  var _materialUiCoreGridDefault = _parcelHelpers.interopDefault(_materialUiCoreGrid);
+  var _materialUiCoreTypography = require('@material-ui/core/Typography');
+  var _materialUiCoreTypographyDefault = _parcelHelpers.interopDefault(_materialUiCoreTypography);
+  var _materialUiCoreAppBar = require('@material-ui/core/AppBar');
+  var _materialUiCoreAppBarDefault = _parcelHelpers.interopDefault(_materialUiCoreAppBar);
+  var _jsxFileName = "D:\\my applications\\notepad\\src\\screens\\home.jsx";
+  class home extends _reactDefault.default.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        admissionId: '',
+        firstname: '',
+        lastname: '',
+        fathername: '',
+        mothername: '',
+        dateofborth: '',
+        email: '',
+        address: '',
+        contact_no: ''
+      };
+      this.addNew = this.addNew.bind(this);
+      ;
+    }
+    async componentDidMount() {
+      const {location} = this.props;
+      const {search} = location;
+      const queryParams = _querystringDefault.default.parse(search.slice(1));
+      if (queryParams.admissionsId) ;
+      {
+        const {data} = await _axiosDefault.default.get(`http://localhost:5000/admissions/${queryParams.admissionsId}`);
+        this.setState({
+          admissionsId: queryParams.admissionsId,
+          firstname: data.value.firstname,
+          lastname: data.value.lastname,
+          fathername: data.value.fathername,
+          mothername: data.value.mothername,
+          email: data.value.email,
+          dateofborth: data.value.dateofborth,
+          address: data.value.address,
+          contact_no: data.value.contact_no
+        });
+      }
+    }
+    async addNew() {
+      const {history} = this.props;
+      const {firstname, lastname, fathername, mothername, email, dateofborth, address, contact_no} = this.state;
+      await _axiosDefault.default.post('http://localhost:5000/admissions', {
+        firstname,
+        lastname,
+        fathername,
+        mothername,
+        email,
+        address,
+        dateofborth,
+        contact_no
+      });
+      history.push('/Display');
+    }
+    render() {
+      const {firstname, lastname, fathername, mothername, email, dateofborth, address, contact_no} = this.state;
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 72,
+            columnNumber: 9
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreAppBarDefault.default, {
+          position: "static",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 73,
+            columnNumber: 13
+          }
+        }, " ", /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTypographyDefault.default, {
+          variant: "h4",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 73,
+            columnNumber: 40
+          }
+        }, "Addmission Form")), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreGridDefault.default, {
+          container: true,
+          spacing: 1,
+          direction: "column",
+          alignItems: "stretch",
+          justify: "center",
+          style: {
+            minHeight: '90vh'
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 75,
+            columnNumber: 9
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTextFieldDefault.default, {
+          identifire: "first name",
+          id: "firstname",
+          label: "Enter firstname",
+          variant: "outlined",
+          value: firstname,
+          onChange: event => this.setState(prev => ({
+            firstname: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 85,
+            columnNumber: 13
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTextFieldDefault.default, {
+          id: "lastname",
+          label: "Enter lastname",
+          variant: "outlined",
+          value: lastname,
+          onChange: event => this.setState(prev => ({
+            lastname: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 99,
+            columnNumber: 14
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTextFieldDefault.default, {
+          id: "fathername",
+          label: "Enter fathername",
+          variant: "outlined",
+          value: fathername,
+          onChange: event => this.setState(prev => ({
+            fathername: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 111,
+            columnNumber: 13
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTextFieldDefault.default, {
+          id: "mothername",
+          label: "Enter mothername",
+          variant: "outlined",
+          value: mothername,
+          onChange: event => this.setState(prev => ({
+            mothername: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 122,
+            columnNumber: 13
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTextFieldDefault.default, {
+          id: "email",
+          label: "Enter email",
+          variant: "outlined",
+          value: email,
+          onChange: event => this.setState(prev => ({
+            email: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 133,
+            columnNumber: 14
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTextFieldDefault.default, {
+          id: "dateofborth",
+          label: "Enter dateofborth",
+          variant: "outlined",
+          value: dateofborth,
+          onChange: event => this.setState(prev => ({
+            dateofborth: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 145,
+            columnNumber: 14
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTextFieldDefault.default, {
+          id: "address",
+          label: "Enter address",
+          variant: "outlined",
+          value: address,
+          onChange: event => this.setState(prev => ({
+            address: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 156,
+            columnNumber: 14
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreTextFieldDefault.default, {
+          id: "contact_no",
+          label: "Enter contact_no",
+          variant: "outlined",
+          value: contact_no,
+          onChange: event => this.setState(prev => ({
+            contact_no: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 167,
+            columnNumber: 14
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreButtonDefault.default, {
+          variant: "contained",
+          onClick: this.addNew,
+          color: "primary",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 180,
+            columnNumber: 22
+          }
+        }, "apply")))
+      );
+    }
+  }
+  exports.default = _reactRouterDom.withRouter(home);
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

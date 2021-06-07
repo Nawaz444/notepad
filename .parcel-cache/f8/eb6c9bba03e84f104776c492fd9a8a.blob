@@ -1,0 +1,92 @@
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _materialUiCoreButton = require('@material-ui/core/Button');
+  var _materialUiCoreButtonDefault = _parcelHelpers.interopDefault(_materialUiCoreButton);
+  var _materialUiCoreMenu = require('@material-ui/core/Menu');
+  var _materialUiCoreMenuDefault = _parcelHelpers.interopDefault(_materialUiCoreMenu);
+  var _materialUiCoreMenuItem = require('@material-ui/core/MenuItem');
+  var _materialUiCoreMenuItemDefault = _parcelHelpers.interopDefault(_materialUiCoreMenuItem);
+  var _jsxFileName = "D:\\my applications\\notepad\\src\\screens\\page.jsx", _s = $RefreshSig$();
+  function SimpleMenu(page) {
+    _s();
+    const [anchorEl, setAnchorEl] = _reactDefault.default.useState(null);
+    const handleClick = event => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+    return (
+      /*#__PURE__*/_reactDefault.default.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18,
+          columnNumber: 5
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreButtonDefault.default, {
+        "aria-controls": "simple-menu",
+        "aria-haspopup": "true",
+        onClick: handleClick,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 19,
+          columnNumber: 7
+        }
+      }, "Open Menu"), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreMenuDefault.default, {
+        id: "simple-menu",
+        anchorEl: anchorEl,
+        keepMounted: true,
+        open: Boolean(anchorEl),
+        onClose: handleClose,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22,
+          columnNumber: 7
+        }
+      }, /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreMenuItemDefault.default, {
+        onClick: handleClose,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29,
+          columnNumber: 9
+        }
+      }, "Profile"), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreMenuItemDefault.default, {
+        onClick: handleClose,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 30,
+          columnNumber: 9
+        }
+      }, "My account"), /*#__PURE__*/_reactDefault.default.createElement(_materialUiCoreMenuItemDefault.default, {
+        onClick: handleClose,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 31,
+          columnNumber: 9
+        }
+      }, "Logout")))
+    );
+  }
+  exports.default = SimpleMenu;
+  _s(SimpleMenu, "+aMDa7FPcESUyQDF1vq0RSMn4/k=");
+  _c = SimpleMenu;
+  var _c;
+  $RefreshReg$(_c, "SimpleMenu");
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

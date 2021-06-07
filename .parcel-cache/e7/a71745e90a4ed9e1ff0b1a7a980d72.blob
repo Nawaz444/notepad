@@ -1,0 +1,134 @@
+var helpers = require("../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+try {
+  var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+  _parcelHelpers.defineInteropFlag(exports);
+  var _react = require('react');
+  var _reactDefault = _parcelHelpers.interopDefault(_react);
+  var _reactRouterDom = require('react-router-dom');
+  var _axios = require('axios');
+  var _axiosDefault = _parcelHelpers.interopDefault(_axios);
+  require('querystring');
+  require('@material-ui/core/Button');
+  require('@material-ui/core/MenuItem');
+  var _jsxFileName = "D:\\my applications\\notepad\\src\\screens\\page.jsx";
+  class page extends _reactDefault.default.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        notepad: '',
+        title: ''
+      };
+      this.editnote = this.editnote.bind(this);
+    }
+    async editnote() {
+      const {history} = this.props;
+      const {notepadId, title, note} = this.state;
+      await _axiosDefault.default.put(`http://localhost:4000/notepad/${notepadId}`, {
+        title,
+        note
+      });
+      history.push('/Display');
+    }
+    render() {
+      return (
+        /*#__PURE__*/_reactDefault.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 43,
+            columnNumber: 13
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(AppBar, {
+          position: "static",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 44,
+            columnNumber: 18
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(Toolbar, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 45,
+            columnNumber: 21
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(IconButton, {
+          edge: "start",
+          color: "inherit",
+          "aria-label": "menu",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 46,
+            columnNumber: 21
+          }
+        }, /*#__PURE__*/_reactDefault.default.createElement(MenuIcon, {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 47,
+            columnNumber: 21
+          }
+        })), /*#__PURE__*/_reactDefault.default.createElement(Typography, {
+          variant: "h6",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 49,
+            columnNumber: 21
+          }
+        }, "Notepad"))), /*#__PURE__*/_reactDefault.default.createElement("h1", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 56,
+            columnNumber: 17
+          }
+        }, " Edit your note"), /*#__PURE__*/_reactDefault.default.createElement("input", {
+          type: "text",
+          placeholder: " Title",
+          onChange: event => this.setState(prev => ({
+            title: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 57,
+            columnNumber: 18
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("textarea", {
+          placeholder: "note",
+          rows: "30",
+          cols: "100",
+          onChange: event => this.setState(prev => ({
+            note: event.target.value
+          })),
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 65,
+            columnNumber: 23
+          }
+        }), /*#__PURE__*/_reactDefault.default.createElement("button", {
+          type: "button",
+          onClick: this.editnote,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 76,
+            columnNumber: 17
+          }
+        }, "Save Edit note"))
+      );
+    }
+  }
+  exports.default = _reactRouterDom.withRouter(page);
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
